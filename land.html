@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>land</title>
+</head>
+<body>
+	<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绘制一个月亮</title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+    window.onload = function() {
+        var canvas = document.getElementById('canvas');
+        canvas.width = 800;
+        canvas.height = 800;
+        var context = canvas.getContext('2d')
+        drawLand(context)
+    }
+
+    function drawLand(cxt) {
+    	cxt.save()
+    	cxt.beginPath()
+    	cxt.moveTo(0,600)
+    	cxt.bezierCurveTo(540,400,600,800,1200,600)
+    	cxt.lineTo(1200,800)
+    	cxt.lineTo(0,800)
+    	cxt.closePath()
+
+
+    	var landStyle = cxt.createLinearGradient(0,800,0,0)
+    	landStyle.addColorStop(0.0,'#030')
+    	landStyle.addColorStop(1.0,'#580')
+    	cxt.fillStyle = landStyle
+    	cxt.fill()
+    	cxt.restore()
+    }
+
+   
+    </script>
+</body>
+
+</html>
+
+</body>
+</html>
