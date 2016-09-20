@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>line</title>
+    <style>
+    canvas {
+        border: 1px solid #aaa;
+        display: block;
+        margin: 50px auto;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <script>
+    window.onload = function() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        context.moveTo(100, 350)
+        context.lineTo(500, 350)
+        context.lineTo(500, 200)
+        context.lineTo(700, 400)
+        context.lineTo(500, 600)
+        context.lineTo(500, 450)
+        context.lineTo(100, 450)
+        /*lineTo要首尾相连，要断开要多次用moveTo,看line2*/
+
+
+        context.lineWidth = 2
+        context.strokeStyle = "green"
+       	/*基于状态的*/
+       	/*最后绘制*/
+        context.stroke();
+    }
+    </script>
+</body>
+
+</html>

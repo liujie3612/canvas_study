@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>star</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <script>
+    function drawStar(cxt, x, y, R, rot) {
+        cxt.save();
+        cxt.translate(x, y)
+        cxt.rotate(rot / 180 * Math.PI)
+        cxt.scale(R, R)
+
+        starPath(cxt)
+        cxt.fillStyle = "#fb3"
+            // cxt.strokeStyle = "#fd5"
+            // cxt.lineWidth = 3
+            // cxt.lineJoin = 'round'
+        cxt.fill()
+            // cxt.stroke()
+        cxt.restore()
+    }
+
+    function starPath(cxt) {
+        cxt.beginPath()
+        for (var i = 0; i < 5; i++) {
+            cxt.lineTo(Math.cos((18 + i * 72) / 180 * Math.PI), -Math.sin((18 + i * 72) / 180 * Math.PI))
+            cxt.lineTo(Math.cos((54 + i * 72) / 180 * Math.PI) * 0.5, -Math.sin((54 + i * 72) / 180 * Math.PI) * 0.5)
+        }
+        cxt.closePath()
+    }
+
+    window.onload = function() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        canvas.width = 1200
+        canvas.height = 800
+            // context.fillStyle = "black"
+
+        // var skyStyle = context.createLinearGradient(0, 0, 0, canvas.height);
+        var skyStyle = context.createRadialGradient(canvas.width / 2, canvas.height, 0, canvas.width / 2, canvas.height, canvas.height)
+        skyStyle.addColorStop(0.0, '#035')
+        skyStyle.addColorStop(1.0, '#000')
+        context.fillStyle = skyStyle
+        context.fillRect(0, 0, canvas.width, canvas.height)
+        
+        for (var i = 0; i < 200; i++) {
+            var r = Math.random() * 5 + 5;
+            var x = Math.random() * canvas.width;
+            var y = Math.random() * canvas.height * 0.65;
+            var a = Math.random() * 360
+            drawStar(context, x, y, r, a);
+        }
+    }
+    </script>
+</body>
+
+</html>

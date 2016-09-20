@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>line</title>
+    <style>
+    canvas {
+        border: 1px solid #aaa;
+        display: block;
+        margin: 50px auto;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <script>
+    window.onload = function() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+
+        context.lineWidth = 10 /*相当于全局变量*/
+
+        // context.beginPath() 第一次是能省去的
+        context.moveTo(100, 200)
+        context.lineTo(300, 400)
+        context.lineTo(100, 600) //从上次的坐标点
+        context.strokeStyle = "red"
+        context.stroke();
+        /*基于状态绘画一次*/
+
+        context.beginPath()
+        context.moveTo(300, 200)
+        context.lineTo(500, 400)
+        context.lineTo(300, 600)
+        context.lineWidth = 4
+        context.strokeStyle = "blue"
+        context.stroke();
+
+        context.beginPath()
+        context.moveTo(500, 200)
+        context.lineTo(700, 400)
+        context.lineTo(500, 600)
+        context.lineWidth = 1
+        context.strokeStyle = "green"   
+        context.stroke();
+        /*要么就是都加beginPath(),清空点 下面的都用lineTo 表示的也是moveTo的意思*/
+
+
+        
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>radialGrad</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <script>
+    window.onload = function() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        var radialGrad = context.createRadialGradient(400,400,0,400,400,500)
+        radialGrad.addColorStop(0.0, 'white')
+        radialGrad.addColorStop(0.25, 'yellow')
+        radialGrad.addColorStop(0.5, 'green')
+        radialGrad.addColorStop(0.75, 'blue')
+        radialGrad.addColorStop(1.0, 'black')
+        context.fillStyle = radialGrad
+        context.fillRect(0,0, 800, 800)
+    }
+    </script>
+</body>
+
+</html>
